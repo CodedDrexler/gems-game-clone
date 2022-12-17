@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gem Evolution</title>
+    <link rel="shortcut icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="elements-wrapper">
+  <div class="main">
+   <h1>GEM <span id="evo">EVOLUTION</span><span class="alpha">(alpha version)</span></h1>
+    <p>Clique na gema para aumentar os pontos</p>
+    <p style="color: rgb(194, 194, 194); padding-top: 2rem;">Pontos: <span id="points">0</span></p>
+      <div class="miner-wrap">
+    <button id="gem"><img src="assets/gem1.png" alt=""></button>
+    <img id="pick" src="./assets/picareta.png" alt="">
+      </div>
+    <br>
+    <button id="evolute">
+      Evolua sua gema! <span>(1.5k)</span>
+    </button>
+  </div>
+
+  
+<div class="upgrades-wrapper">
+<div class="upgrades">
+  <h2>Upgrades</h2>
+  <p>
+    <button id="upgrade1">Dobro de pontos (10 pontos)</button><br>
+    <button id="upgrade2">Triplo de pontos (20 pontos)</button><br>
+    <button id="upgrade3">Quadruplo de pontos (60 pontos)</button><br>
+    <button id="upgrade4">Multiplicador Máximo (debug) <strong>(desligado)</strong></button>
+  </p>
+
+
+  <button id="reset">Reset</button>
+  </div>
+
+  <div class="upgrades">
+    <h2>Menu da picareta</h2>
+  <p>
+    <button id="upgrade1">Melhorar qualidade (500 pontos)</button><br>
+    <button id="upgrade2">Encantar (1b pontos)</button>
+  </p>
+  </div>
+</div>
+</div>
+  <script>
+const gem = document.getElementById("gem");
+const points = document.getElementById("points");
+const upgrade1 = document.getElementById("upgrade1");
+const upgrade2 = document.getElementById("upgrade2");
+const upgrade3 = document.getElementById("upgrade3");
+const reset = document.getElementById("reset");
+const evolute = document.getElementById("evolute");
+
+
+
+const minerImage = document.getElementById('pick');
+
+let angle = 0;
+
+gem.addEventListener('click', function() {
+  angle -= 40;
+  minerImage.style.transform = `rotate(${angle}deg)`;
+  setTimeout(function() {
+    angle = 0;
+    minerImage.style.transform = `rotate(${angle}deg)`;
+  }, 90);
+});
+
+let currentPoints = 0;
+let pointMultiplier = 1;
+
+gem.addEventListener("click", () => {
+  currentPoints += pointMultiplier;
+  points.innerHTML = formatNumber(currentPoints);
+});
+
+upgrade1.addEventListener("click", () => {
+  if (currentPoints >= 10) {
+    pointMultiplier = 2;
+    currentPoints -= 10;
+    points.innerHTML = formatNumber(currentPoints);
+    upgrade1.disabled = true;
+  }
+});
+evolute.addEventListener("click", () => {
+  if (currentPoints >= 1500) {
+
+    currentPoints -= 1500;
+    points.innerHTML = formatNumber(currentPoints);
+    gem.innerHTML = '<img src="./assets/gem2.png" alt="">';
+  }
+});
+
+upgrade2.addEventListener("click", () => {
+  if (currentPoints >= 20) {
+    pointMultiplier = 3;
+    currentPoints -= 20;
+    points.innerHTML = formatNumber(currentPoints);
+    upgrade2.disabled = true;
+  }
+});
+upgrade3.addEventListener("click", () => {
+  if (currentPoints >= 60) {
+    pointMultiplier = 4;
+    currentPoints -= 60;
+    points.innerHTML = formatNumber(currentPoints);
+    upgrade3.disabled = true;
+  }
+});
+/*upgrade4.addEventListener("click", () => {
+
+    pointMultiplier = 100000000000000000;
+    points.innerHTML = formatNumber(currentPoints);
+    upgrade4.disabled = true;
+  
+});
+*/
+
+reset.addEventListener("click", () => {
+  currentPoints = 0;
+  pointMultiplier = 1;
+  points.innerHTML = formatNumber(currentPoints);
+  upgrade1.disabled = false;
+  upgrade2.disabled = false;
+  upgrade3.disabled = false;
+  upgrade4.disabled = false;
+  gem.innerHTML = '<img src="./assets/gem1.png" alt="">';
+});
+
+function formatNumber(number) {
+  if (number < 1e3) return number;
+  if (number >= 1e3 && number < 1e6) return +(number / 1e3).toFixed(1) + "k";
+  if (number >= 1e6 && number < 1e9) return +(number / 1e6).toFixed(1) + "m";
+  if (number >= 1e9 && number < 1e12) return +(number / 1e9).toFixed(1) + "b";
+  if (number >= 1e12) return +(number / 1e12).toFixed(1) + "sus";
+}
+
+
+
+  </script>
+</body>
+</html>

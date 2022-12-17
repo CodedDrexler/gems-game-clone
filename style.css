@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: 'DM Sans', sans-serif;
+  font-size: 120%;
+  min-height: 100vh;
+}
+.main{
+  max-width: 98rem;
+  padding-top: 2rem;
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+.pontos{
+  margin-top: 12rem;
+}
+
+#evo{
+  color: rgb(203, 255, 126);
+}
+
+button{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+button img{
+  width: 90%;
+}
+
+
+
+#evolute{
+  font-weight: 600;
+  border-radius: 4rem;
+  width: 20rem;
+  height: 3rem;
+  margin-top: 1rem;
+  border: 2px solid rgb(111, 236, 188);
+  margin-bottom: 4rem;
+  transition: .4s all ease-in-out;
+}
+
+.alpha{
+  color: grey;
+  font-size: 50%;
+  padding-left: 4rem;
+}
+
+#evolute:hover{
+  background-color: rgb(117, 240, 117);
+}
+
+.upgrades{
+  box-shadow: transparent 0px 0px 0px 1px, rgb(8 7 10 / 11%) 0px 4px 19px;
+  border-radius: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: rgb(138, 229, 110);
+  width: 22rem;
+  height: 14rem;
+  margin: 0 auto;
+}
+.upgrades:last-child{
+  background-color: rgb(255, 214, 64);
+}
+
+.miner-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upgrades-wrapper{
+  gap: 15rem;
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+  max-width: 60rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
